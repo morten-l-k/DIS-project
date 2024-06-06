@@ -1,0 +1,12 @@
+{% extends "navbar.html" %} {% block content %}
+<h1>Head-to-head</h1>
+
+<form method="post">
+    <label for="home">Home team</label>
+    <input name="home_team" id="homeid" required>
+    <label for="away">Away team</label>
+    <input name="away_team" id="awayid" required>
+    <input type="submit" value="Search">
+</form>
+
+{% endblock content %}
