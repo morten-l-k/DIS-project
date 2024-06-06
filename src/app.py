@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, session, abort, request, flash
 import requests
+import re
 from bs4 import BeautifulSoup
 import psycopg2
 from flask_bcrypt import Bcrypt
@@ -58,6 +59,12 @@ def createaccount():
     if request.method == 'POST':
         new_username = request.form['username']
         new_password = request.form['password']
+        if not re.search(r'^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d).{9,}$', new_username):
+            flash('Username must contain at least two digits!')
+            return render_template("createaccount.html")
+        if not re.search(r''):
+            flash('Password must contain at least two digits!')
+            return render_template("createaccount.html")
         cur.execute(f'''select * from users where username = '{new_username}' ''')
         unique = cur.fetchall()
         flash('Account created!')
