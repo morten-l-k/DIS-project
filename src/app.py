@@ -59,11 +59,11 @@ def createaccount():
     if request.method == 'POST':
         new_username = request.form['username']
         new_password = request.form['password']
-        if not re.search(r'^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d).{9,}$', new_username):
-            flash('Username must contain at least two digits!')
+        if not re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_username):
+            flash('Username must contain at least one captial letter, one special character and one digit!')
             return render_template("createaccount.html")
-        if not re.search(r''):
-            flash('Password must contain at least two digits!')
+        if not re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password):
+            flash('Password must contain at least one captial letter, one special character and one digit!')
             return render_template("createaccount.html")
         cur.execute(f'''select * from users where username = '{new_username}' ''')
         unique = cur.fetchall()
