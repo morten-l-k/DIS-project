@@ -1,15 +1,22 @@
 {% extends "navbar.html" %} {% block content %}
 <h1>
-  Welcome back {{username}}!
-</h1> 
+    Welcome back {{username}}!
+</h1>
 <h2>
     What would you like to do?
 </h2>
-<a href="/updpass">
-    <div class="clickable-box">
+<div class="clickable-box">
+    <a href="/updpass">
         <h4> Update password </h4>
-    </div>
-</a>
+    </a>
+</div>
+
+<div class="clickable-box">
+    <form action="/delete-user" method="post">
+        <button type="submit"> Delete user </button>
+    </form>
+    </a>
+</div>
 
 
 {% endblock content %}
