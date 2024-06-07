@@ -235,3 +235,92 @@ p.card-text {
   padding: 2px 16px;
   height: 146px;
 }
+
+/* boxes for profile site */
+.clickable-box {
+  width: 200px;
+  height: 100px;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.clickable-box:hover {
+  background-color: #45a049;
+}
+
+/* for updating password */
+.update-screen {
+  background: #c5ccd6;
+  border: 4px solid #ea00d9;
+  color: rgba(241, 234, 234, 0.8);
+  padding: 20px;
+  }
+
+.update-title {
+  text-align: center;
+  color: #ea00d9;
+  }
+
+.password-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.password-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+.btn {
+  border: solid;
+  background: #878b91;
+  color: #252225;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 10px;
+  text-decoration: none;
+  text-shadow: none;
+  
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+  }
+
+/* Go back button */
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  color: #333;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e2e6ea;
+  color: #000;
+}

@@ -1,0 +1,30 @@
+{% extends "navbar.html" %} {% block content %}
+
+<form action="/updpass" method="POST">
+    <div class= "update-screen"> 
+        <div class="update-title">
+           <h2> Update password</h2>
+        </div>
+    </div>
+    <div class="password-box">
+        <input 
+            type="password" 
+            class="password-input" 
+            value=""
+            placeholder="Enter your new password"
+            name="password"
+            />
+      </div>
+      <input
+            type="submit"
+            value="Update password"
+            class="btn btn-primary btn-large btn-block"
+            name="update"
+        />
+</form>
+<a href="/profile">
+    <div class="back-button">
+    </div>
+</a>
+{% endblock content %}
+

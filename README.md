@@ -7,6 +7,8 @@ Assumes a working Python 3 installation (with python=python3 and pip=pip3).
 IMPORTANT: In 'Results Attributes.SQL' change the full path of the 'results.csv' file which is located in the tmp directory
 
 >$ psql -h hostname -d dbname -U username -W
+or
+>$ psql -U dbownername -d dbname
 
 Create table users:
 =# \i 'path/to/src/Create Users.SQL'
