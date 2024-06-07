@@ -12,8 +12,8 @@ import random
 
 app = Flask(__name__ , static_url_path='/static')
 
-# set your own database name, username and password
-db = "dbname='Footballpage' user='oliverlarsen' host='localhost' password=''" #potentially wrong password
+# set your own database name, username and password. IMPORTANT: If wrong database will crash!
+db = "dbname='nft' user='postgres' host='localhost' password=''" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -230,6 +230,25 @@ def updpass():
             # log the user out aftwerwards
             return render_template('login.html')
         return render_template('updpass.html')
+    
+@app.route("/delete-user", methods=['POST'])
+def deleteuser():
+    cur = conn.cursor()
+
+    user_name = session['username']
+
+    sql_delete = f''' DELETE FROM users
+               WHERE username = '{user_name}' '''
+    
+    print(sql_delete)
+
+    cur.execute(sql_delete)
+    conn.commit()
+    
+    session['logged_in'] = False
+
+    # return render_template('login.html')
+    return home()
     
 
 
