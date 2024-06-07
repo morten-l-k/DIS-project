@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Results(
 );
 
 COPY Results(date, home_team, away_team, home_score, away_score, tournament, city, country, neutral)
-    FROM '/Users/mortenlundorffkristensen/Desktop/DIS/nft-crypto-punk/tmp/results.csv'
+    FROM '/Users/oliverlarsen/Dropbox/Datalogi/DIS/Afleveringer/Projekt/DIS-project/tmp/results.csv'
     delimiter ','
     CSV HEADER
     NULL 'NA';

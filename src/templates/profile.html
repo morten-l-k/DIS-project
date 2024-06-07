@@ -1,29 +1,15 @@
 {% extends "navbar.html" %} {% block content %}
 <h1>
   Welcome back {{username}}!
-</h1>
-<h3>
-  Favourite Punks: 
-</h3>
-
-<div class="cards">
-  {%for i in range(length)%}
-  <a href="/punk/{{content[i][0]}}">
-    <div class="card">
-      <img
-        src="/static/images/{{content[i][0]}}.png"
-        alt="Avatar"
-        class="image"
-      />
-      <div class="container">
-        <h4><b>Punk nr. {{content[i][0]}}</b></h4>
-        <p class="card-text">Type: {{content[i][1]}}</p>
-        <p class="card-text">Gender: {{content[i][2]}}</p>
-        <p class="card-text">Skintone: {{content[i][3]}}</p>
-        <p class="card-text">Accesories: {{content[i][4]}}</p>
-      </div>
+</h1> 
+<h2>
+    What would you like to do?
+</h2>
+<a href="/updpass">
+    <div class="clickable-box">
+        <h4> Update password </h4>
     </div>
-  </a>
-  {%endfor%}
-</div>
+</a>
+
+
 {% endblock content %}

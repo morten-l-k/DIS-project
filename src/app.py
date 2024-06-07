@@ -13,7 +13,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='nft' user='postgres' host='localhost' password=''" #potentially wrong password
+db = "dbname='Footballpage' user='oliverlarsen' host='localhost' password=''" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -29,11 +29,11 @@ def home():
         if request.method == 'POST':
             home_team = request.form['home_team']
             away_team = request.form['away_team']
-            # cur.execute(f'''SELECT * 
-            #                 FROM results
-            #                 WHERE home_team = '{home_team}' and away_team = '{away_team}' ''')
-            # matches = list(cur.fetchall())
-            # length = len(matches)
+            cur.execute(f'''SELECT * 
+                            FROM results
+                            WHERE home_team = '{home_team}' and away_team = '{away_team}' ''')
+            matches = list(cur.fetchall())
+            length = len(matches)
             
             return redirect(url_for("queryresults", hometeam=home_team, awayteam=away_team))
     
@@ -59,12 +59,13 @@ def createaccount():
     if request.method == 'POST':
         new_username = request.form['username']
         new_password = request.form['password']
-        if not re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_username):
+        if re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_username) == None:
             flash('Username must contain at least one captial letter, one special character and one digit!')
-            return render_template("createaccount.html")
-        if not re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password):
+            #return render_template("createaccount.html")
+        if re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password) == None:
+        #if not re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password):
             flash('Password must contain at least one captial letter, one special character and one digit!')
-            return render_template("createaccount.html")
+            #return render_template("createaccount.html")
         cur.execute(f'''select * from users where username = '{new_username}' ''')
         unique = cur.fetchall()
         flash('Account created!')
@@ -187,19 +188,49 @@ def logout():
     session['logged_in'] = False
     return home()
 
-# @app.route("/profile")
-# def profile():
-#     cur = conn.cursor()
-#     if not session.get('logged_in'):
-#         return render_template('login.html')
+@app.route("/profile")
+def profile():
+    cur = conn.cursor()
+    if not session.get('logged_in'):
+        return render_template('login.html')
     
-#     username = session['username']
+    username = session['username']
 
-#     sql1 = f'''select id, type, gender, skin_tone, count, accessories from favorites natural join attributes where username = '{username}' '''
-#     cur.execute(sql1)
-#     favs = cur.fetchall()
-#     length = len(favs)
-#     return render_template("profile.html", content=favs, length=length, username = username)
+    # # SQL for updating password
+    # new_password = request.form['password']
+    # updPassSql = f'''UPDATE users SET password = '{new_password}' WHERE username = '{username}' '''
+
+    # # SQL for deleting profile 
+    # delProfSql = f'''DELETE FROM users WHERE username = '{username}' '''
+
+    ########### Old code 
+    #sql1 = f'''select id, type, gender, skin_tone, count, accessories from favorites natural join attributes where username = '{username}' '''
+    # cur.execute(sql1)
+    # favs = cur.fetchall()
+    #length = len(favs)
+    #return render_template("profile.html", content=favs, length=length, username = username)
+    return render_template("profile.html", username=username)
+
+@app.route("/updpass", methods=['POST', 'GET'])
+def updpass():
+    cur = conn.cursor()
+    if not session.get('logged_in'):
+        return render_template('login.html')
+        #return redirect(url_for('/login', next=url_for('/updpass')))
+    else:
+        if request.method == 'POST':
+            new_password = request.form['password']
+            if re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password) == None:
+                flash('Password must contain at least one captial letter, one special character and one digit!')
+                print("here")
+                return render_template('updpass.html')
+            username = session['username']
+            updPassSql = f'''UPDATE users SET password = '{new_password}' WHERE username = '{username}' '''
+            cur.execute(updPassSql)
+            # log the user out aftwerwards
+            return render_template('login.html')
+        return render_template('updpass.html')
+    
 
 
 # @app.route("/punk/<punkid>", methods=["POST", "GET"])
