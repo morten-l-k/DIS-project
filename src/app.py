@@ -9,7 +9,7 @@ import os
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='XXXX' user='XXXX' host='localhost' password='XXX'" #potentially wrong password
+db = "dbname='Footballpage' user='oliverlarsen' host='localhost' password='XXX'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -57,7 +57,7 @@ def createaccount():
         new_password = request.form['password']
         
         if re.search(r'[A-Z]+([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*', new_username) == None:
-            flash('Username must start with a capital letter!', 'username_error')
+            flash('Username must contain a capital letter!', 'username_error')
             return render_template("createaccount.html")
         if re.search(r'([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*[!@#$%^&*(),.?":{}|<>_]+([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*', new_password) == None:
             flash('Password must have one special character!', 'password_error')

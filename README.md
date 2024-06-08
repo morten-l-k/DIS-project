@@ -25,7 +25,7 @@ Create tabel 'results' and populate data:
 
 # How to use the application:
 
-(1) Create account / You start by pressing the 'Create Account' button, you then get to page where you choose your username and password. The username must start with a capital letter, and the password must have atleast one special character (!@#$%^&*(),.?":{}|<>_)
+(1) Create account / You start by pressing the 'Create Account' button, you then get to page where you choose your username and password. The username must contain a capital letter, and the password must have atleast one special character (!@#$%^&*(),.?":{}|<>_)
 
 (2) Login / Now you can login on your account by typing in your username and password.
 
