@@ -1,19 +1,15 @@
-from flask import Flask, render_template, redirect, url_for, session, abort, request, flash
-import requests
+from flask import Flask, render_template, redirect, url_for, session, request, flash
 import re
-from bs4 import BeautifulSoup
 import psycopg2
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager
 import os
-import glob
-import pandas as pd
-import random
+
+
 
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password
-db = "dbname='XXXX' user='XXXX' host='localhost' password='XXXX'" #potentially wrong password
+db = "dbname='XXXX' user='XXXX' host='localhost' password='XXX'" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
