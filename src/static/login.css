@@ -17,14 +17,14 @@
     }
     .login-screen {
     background: #c5ccd6;
-    border: 4px solid #ea00d9;
+    border: 4px solid #133e7c;
     color: rgba(241, 234, 234, 0.8);
     padding: 20px;
     }
     
     .app-title {
     text-align: center;
-    color: #ea00d9;
+    color: #133e7c;
     }
     
     .login-form {
@@ -34,6 +34,12 @@
     margin-bottom: 10px;
     }
     
+    .flash-message {
+    color: rgb(225, 40, 40);
+    margin-bottom: 10px;
+    font-weight:  normal;
+    }
+
     input {
     text-align: center;
     background-color: #FFF;

@@ -10,14 +10,7 @@
 <form action="/createaccount" method="POST">
 	<div class="login">
 		<div class="mainDIV">
-			<div class="leftDIV">
-				<img src="/static/images/2955.png" alt="Avatar" class="image">
-			</div>
-			
 			<div class="middleDIV"></div>
-			<div class="rightDIV">
-				<img src="/static/images/2140.png" alt="Avatar" class="image">
-			</div>
 		</div>
 		<div class="login-screen">
 			<div class="app-title">
@@ -25,6 +18,14 @@
 			</div>
 			<div class="login-form">
 				<div class="control-group">
+					<!-- Flash Messages -->
+					{% with messages = get_flashed_messages(with_categories=true) %}
+						{% for category, message in messages %}
+							{% if category == 'username_error' %}
+								<div class="flash-message">{{ message }}</div>
+							{% endif %}
+						{% endfor %}
+					{% endwith %}
 					<input
 						type="text"
 						class="login-field"
@@ -35,6 +36,14 @@
 					<label class="login-field-icon fui-user" for="login-name"></label>
 				</div>
 				<div class="control-group">
+					<!-- Flash Messages -->
+					{% with messages = get_flashed_messages(with_categories=true) %}
+						{% for category, message in messages %}
+							{% if category == 'password_error' %}
+								<div class="flash-message">{{ message }}</div>
+							{% endif %}
+						{% endfor %}
+					{% endwith %}
 					<input
 						type="password"
 						class="login-field"

@@ -13,7 +13,7 @@ import random
 app = Flask(__name__ , static_url_path='/static')
 
 # set your own database name, username and password. IMPORTANT: If wrong database will crash!
-db = "dbname='nft' user='postgres' host='localhost' password=''" #potentially wrong password
+db = "dbname='Footballpage' user='oliverlarsen' host='localhost' password=''" #potentially wrong password
 conn = psycopg2.connect(db)
 cursor = conn.cursor()
 
@@ -59,13 +59,13 @@ def createaccount():
     if request.method == 'POST':
         new_username = request.form['username']
         new_password = request.form['password']
-        if re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_username) == None:
-            flash('Username must contain at least one captial letter, one special character and one digit!')
-            #return render_template("createaccount.html")
-        if re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password) == None:
-        #if not re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password):
-            flash('Password must contain at least one captial letter, one special character and one digit!')
-            #return render_template("createaccount.html")
+        
+        if re.search(r'[A-Z]+([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*', new_username) == None:
+            flash('Username must start with a capital letter!', 'username_error')
+            return render_template("createaccount.html")
+        if re.search(r'([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*[!@#$%^&*(),.?":{}|<>_]+([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*', new_password) == None:
+            flash('Password must have one special character!', 'password_error')
+            return render_template("createaccount.html")
         cur.execute(f'''select * from users where username = '{new_username}' ''')
         unique = cur.fetchall()
         flash('Account created!')
@@ -220,15 +220,14 @@ def updpass():
     else:
         if request.method == 'POST':
             new_password = request.form['password']
-            if re.search(r'[A-Z]+[a-z]*[!@#$%^&*(),.?":{}|<>_]+[\d]+', new_password) == None:
-                flash('Password must contain at least one captial letter, one special character and one digit!')
-                print("here")
+            if re.search(r'([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*[!@#$%^&*(),.?":{}|<>_]+([a-z]*|[!@#$%^&*(),.?":{}|<>_]*|[\d]*|[A-Z]*)*', new_password) == None:
+                flash('Password must have one special character!', 'password_error')
                 return render_template('updpass.html')
             username = session['username']
             updPassSql = f'''UPDATE users SET password = '{new_password}' WHERE username = '{username}' '''
             cur.execute(updPassSql)
-            # log the user out aftwerwards
-            return render_template('login.html')
+            conn.commit()
+            return redirect(url_for("home"))
         return render_template('updpass.html')
     
 @app.route("/delete-user", methods=['POST'])
