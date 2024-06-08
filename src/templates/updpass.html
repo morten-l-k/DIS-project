@@ -3,6 +3,13 @@
 <form action="/updpass" method="POST">
     <div class= "update-screen"> 
         <div class="update-title">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}
+                    {% if category == 'password_error' %}
+                        <div class="flash-message">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endwith %}
            <h2> Update password</h2>
         </div>
     </div>

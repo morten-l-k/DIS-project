@@ -35,23 +35,30 @@ li a {
 }
 
 li a:hover:not(.active) {
-  color: #ea00d9;
+  color: #0014ea;
 }
 
 body {
-  background: #133e7c;
+  background: repeating-linear-gradient(#e3e1f4, #133e7c,#e3e1f4) fixed;
   margin-top: 10px;
   margin-left: 100px;
   margin-right: 100px;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 label {
   font-size: 18px;
-  color: #ea00d9;
+  color: #0400ea;
 }
+
+.flash-message {
+color: rgb(225, 40, 40);
+margin-bottom: 10px;
+font-weight:  normal;
+}
+
 #form {
   width: 400px;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   padding: 10px;
   font-size: 18px;
   outline:none;
@@ -63,7 +70,7 @@ label {
 }
 #formNumber {
 width: 100px;
-  font-family: 'Press Start 2P', sans-serif;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   padding: 10px;
   font-size: 18px;
   outline:none;
@@ -84,7 +91,7 @@ width: 100px;
 
 #button {
   width: 125px;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   padding: 11px;
   font-size: 15px;
   font-weight:bold;
@@ -97,7 +104,7 @@ width: 100px;
 #buttonAdd {
   width: 250px;
   height: 125px;
-  font-family: 'Press Start 2P', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   padding: 11px;
   font-size: 15px;
   font-weight:bold;
@@ -124,29 +131,29 @@ width: 100px;
 }
 p {
   font-size: 1.2em;
-  color: #ea00d9;
+  color: #0037ea;
 }
 
 h1 {
   font-size: 2.5em;
-  color: #ea00d9;
+  color: #001fea;
   text-align: center;
 }
 h2 {
   font-size: 1.5em;
-  color: #fcec0c;
+  color: #030300;
   text-align: center;
 }
 h3 {
   font-size: 1.5em;
-  color: #fcec0c;
+  color: #0a0606;
 }
 h4 {
     text-align: center;
-    color: #ea00d9;
+    color: #2f00ea;
 }
 p.card-text {
-    font-size: 0.6em;
+    font-size: 1em;
     color: #0abdc6;
 }
 
@@ -190,7 +197,7 @@ p.card-text {
   padding-top: 1rem;
 }
 .tableitem {
-  border: 4px solid #fcec0c;
+  border: 4px solid #f7f7f7;
   padding: 1rem;
 }
 .image {
@@ -216,31 +223,31 @@ p.card-text {
 
 .card {
   /* Add shadows to create the "card" effect */
-  border: 4px solid #ea00d9;
+  border: 4px solid #1b00ea;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 300px;
-  height: 450px;
+  height: 200px;
 }
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  border: 4px solid #fcec0c;
+  border: 4px solid #0cfcf4;
 }
 
 /* Add some padding inside the card container */
 .container {
   background-color: #091833;
   padding: 2px 16px;
-  height: 146px;
+  height: 196px;
 }
 
 /* boxes for profile site */
 .clickable-box {
   width: 200px;
   height: 100px;
-  background-color: #4CAF50;
+  background-color: #f2f3f3;
   color: white;
   display: flex;
   justify-content: center;
@@ -252,13 +259,13 @@ p.card-text {
 }
 
 .clickable-box:hover {
-  background-color: #45a049;
+  background-color: #0abdc6;
 }
 
 /* for updating password */
 .update-screen {
-  background: #c5ccd6;
-  border: 4px solid #ea00d9;
+  background: #fafafc;
+  border: 4px solid #1515ce;
   color: rgba(241, 234, 234, 0.8);
   padding: 20px;
   }
@@ -290,7 +297,7 @@ p.card-text {
 }
 .btn {
   border: solid;
-  background: #878b91;
+  background: #f1f2f2;
   color: #252225;
   font-size: 16px;
   line-height: 25px;
@@ -323,4 +330,24 @@ p.card-text {
 .back-button:hover {
   background-color: #e2e6ea;
   color: #000;
+}
+
+/* Style for the delete button */
+.delete-button {
+  width: 200px;
+  height: 100px;
+  background-color: #f2f3f3;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the delete button */
+.delete-button:hover {
+  background-color: #d32f2f; /* Darker red on hover */
 }
